@@ -1,22 +1,9 @@
 import Link from 'next/link'
 import { connect } from 'react-redux'
-import LinkComp from '../source/shared/Link/component'
+
 import Counter from './counter'
 import Clock from './clock'
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import MuiLink from '@material-ui/core/Link'
-import ProTip from '../source/shared/ProTip/component';
-
-const Typog = () => (
-  <Typography variant="body2" color="textSecondary" align="center">
-  {'Built with love by the '}
-  <LinkComp color="inherit" href="/">
-    Material-UI
-  </LinkComp>
-  {' team.'}
-</Typography>
-)
+import ProTip from '../source/shared/ProTip/component'
 function Page ({
   error,
   lastUpdate,
@@ -27,10 +14,19 @@ function Page ({
   title
 }) {
   return (
-    <Container>
-      <Typog />
-      <h1>{title}</h1>
+    <>
+      <style jsx global> {
+        `
+          body {
+            font-family: 'Work Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+          }
+        `}
+      </style>
       <ProTip />
+      <h1>{title}</h1>
       <Clock lastUpdate={lastUpdate} light={light} />
       <Counter />
       <nav>
@@ -44,7 +40,7 @@ function Page ({
         </pre>
       )}
       {error && <p style={{ color: 'red' }}>Error: {error.message}</p>}
-    </Container>
+    </>
   )
 }
 

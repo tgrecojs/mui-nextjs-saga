@@ -5,7 +5,8 @@ export const exampleInitialState = {
   error: false,
   lastUpdate: 0,
   light: false,
-  placeholderData: null
+  placeholderData: null,
+  breachDetails: { status: 'idle', payload: 'empty'}
 }
 
 function reducer (state = exampleInitialState, action) {
